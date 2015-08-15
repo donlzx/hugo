@@ -32,7 +32,8 @@ The following is an example of a typical yaml config file:
     baseurl: "http://yoursite.example.com/"
     ...
 
-The following is an example of a toml config file with some of the default values. Values under `[params]` will populate the `.Site.Params` variable for use in templates:
+The following is an example of a toml config file with some of the default values.
+Values under `[params]` will populate the `.Site.Params` variable for use in templates:
 
     contentdir = "content"
     layoutdir = "layouts"
@@ -49,7 +50,7 @@ The following is an example of a toml config file with some of the default value
       description = "Tesla's Awesome Hugo Site"
       author = "Nikola Tesla"
 
-Here is a yaml configuration file which sets a few more options
+Here is a yaml configuration file which sets a few more options:
 
     ---
     baseurl: "http://yoursite.example.com/"
@@ -80,7 +81,7 @@ Following is a list of Hugo-defined variables that you can configure and their c
     # include content with publishdate in the future
     buildFuture:                false
     # enable this to make all relative URLs relative to content root. Note that this does not affect absolute URLs.
-    relativeURLs: 		false
+    relativeURLs:               false
     canonifyURLs:               false
     # config file (default is path/config.yaml|json|toml)
     config:                     "config.toml"
@@ -120,7 +121,8 @@ Following is a list of Hugo-defined variables that you can configure and their c
     pygmentsStyle:              "monokai"
     # true: use pygments-css or false: color-codes directly
     pygmentsUseClasses:         false
-    sitemap:                    ""
+    # default sitemap configuration map
+    sitemap:
     # filesystem path to read files relative from
     source:                     ""
     staticdir:                  "static"
@@ -157,24 +159,25 @@ But Hugo does expose some options---as listed in the table below, matched with t
 
 <tbody>
 <tr>
-<td><code>angledQuotes</code></td>
+<td><code><strong>angledQuotes</strong></code></td>
 <td><code>false</code></td>
 <td><code>HTML_SMARTYPANTS_ANGLED_QUOTES</code></td>
 </tr>
 <tr>
 <td class="purpose-title">Purpose:</td>
-<td class="purpose-description" colspan="2">Enable smart angled double quotes <small>(e.g.&nbsp;<code>"Hugo"</code> renders to «Hugo» instead of “Hugo”)</small></td>
+<td class="purpose-description" colspan="2">Enable/Disable smart angled double quotes.<br>
+<small><strong>Example:</strong>&nbsp;<code>"Hugo"</code> renders to «Hugo» instead of “Hugo”.</small></td>
 </tr>
 
 <tr>
-<td><code>fractions</code></td>
+<td><code><strong>fractions</strong></code></td>
 <td><code>true</code></td>
 <td><code>HTML_SMARTYPANTS_FRACTIONS</code></td>
 </tr>
 <tr>
 <td class="purpose-title">Purpose:</td>
-<td class="purpose-description" colspan="2">Enable smart fractions
-<small>(e.g.&nbsp;<code>5/12</code> renders to <sup>5</sup>&frasl;<sub>12</sub> (<code>&lt;sup&gt;5&lt;/sup&gt;&amp;frasl;&lt;sub&gt;12&lt;/sub&gt;</code>))
+<td class="purpose-description" colspan="2">Enable/Disable smart fractions.<br>
+<small><strong>Example:</strong>&nbsp;<code>5/12</code> renders to <sup>5</sup>&frasl;<sub>12</sub> (<code>&lt;sup&gt;5&lt;/sup&gt;&amp;frasl;&lt;sub&gt;12&lt;/sub&gt;</code>)<br>
 <strong>Caveat:</strong> Even with <code>fractions = false</code>,
 Blackfriday would still convert 1/2, 1/4 and 3/4 to ½&nbsp;(<code>&amp;frac12;</code>),
 ¼&nbsp;(<code>&amp;frac14;</code>) and ¾&nbsp;(<code>&amp;frac34;</code>) respectively,
@@ -182,33 +185,36 @@ but only these three.</small></td>
 </tr>
 
 <tr>
-<td><code>plainIdAnchors</code></td>
+<td><code><strong>plainIdAnchors</strong></code></td>
 <td><code>false</code></td>
 <td><code>FootnoteAnchorPrefix</code> and <code>HeaderIDSuffix</code></td>
 </tr>
 <tr>
 <td class="purpose-title">Purpose:</td>
-<td class="purpose-description" colspan="2">If <code>true</code>, then header and footnote IDs are generated without the document ID <small>(e.g.&nbsp;<code>#my-header</code> instead of <code>#my-header:bec3ed8ba720b9073ab75abcf3ba5d97</code>)</small></td>
+<td class="purpose-description" colspan="2">If <code>true</code>, then header and footnote IDs are generated without the document ID.<br>
+<small><strong>Example:</strong>&nbsp;<code>#my-header</code> instead of <code>#my-header:bec3ed8ba720b9073ab75abcf3ba5d97</code>.</small></td>
 </tr>
 
 <tr>
-<td><code>extensions</code></td>
+<td><code><strong>extensions</strong></code></td>
 <td><code>[]</code></td>
 <td><code>EXTENSION_*</code></td>
 </tr>
 <tr>
 <td class="purpose-title">Purpose:</td>
-<td class="purpose-description" colspan="2">Use non-default additional extensions <small>(e.g.&nbsp;Add <code>"hardLineBreak"</code> to use <code>EXTENSION_HARD_LINE_BREAK</code>)</small></td>
+<td class="purpose-description" colspan="2">Use non-default additional extensions.<br>
+<small><strong>Example:</strong>&nbsp;Add <code>"hardLineBreak"</code> to use <code>EXTENSION_HARD_LINE_BREAK</code>.</small></td>
 </tr>
 
 <tr>
-<td><code>extensionsmask</code></td>
+<td><code><strong>extensionsmask</strong></code></td>
 <td><code>[]</code></td>
 <td><code>EXTENSION_*</code></td>
 </tr>
 <tr>
 <td class="purpose-title">Purpose:</td>
-<td class="purpose-description" colspan="2">Extensions in this option won't be loaded. <small>(e.g.&nbsp;Add <code>"autoHeaderIds"</code> to disable <code>EXTENSION_AUTO_HEADER_IDS</code>)</small></td>
+<td class="purpose-description" colspan="2">Extensions in this option won't be loaded.<br>
+<small><strong>Example:</strong>&nbsp;Add <code>"autoHeaderIds"</code> to disable <code>EXTENSION_AUTO_HEADER_IDS</code>.</small></td>
 </tr>
 </tbody>
 </table>
@@ -223,8 +229,8 @@ but only these three.</small></td>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><pre><code>[blackfriday]
+<tr style="vertical-align: top;">
+<td style="width: 50%;"><pre><code>[blackfriday]
   angledQuotes = true
   fractions = false
   plainIdAnchors = true

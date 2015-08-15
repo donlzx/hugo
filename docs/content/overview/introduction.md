@@ -57,7 +57,7 @@ a file is cached, a copy of it is temporarily stored on the computer.
 It is much faster for the HTTP server to send that copy the next time
 the page is requested than it is to generate it from scratch.
 
-Hugo takes cacheing a step further. All HTML files are rendered on your
+Hugo takes caching a step further. All HTML files are rendered on your
 computer. You can review the files before you copy them to the computer
 hosting the HTTP server. Since the HTML files aren't generated dynamically,
 we say that Hugo is a "static site generator."
@@ -85,7 +85,7 @@ links work properly with most hosting companies.
 
 ## What does Hugo do?
 
-In technical terms, Hugo takes a source directory of Markdown files and
+In technical terms, Hugo takes a source directory of files and
 templates and uses these as input to create a complete website.
 
 Hugo boasts the following features:
@@ -114,7 +114,8 @@ Hugo boasts the following features:
 
 ### Content
 
-  * Content written in [Markdown](/content/example/)
+  * Native support for content written in [Markdown](/content/example/)
+    * Support for other languages through _external helpers_, see [supported formats](/content/supported-formats)
   * Support for TOML, YAML and JSON metadata in [frontmatter](/content/front-matter/)
   * Completely [customizable homepage](/layout/homepage/)
   * Support for multiple [content types](/content/types/)
