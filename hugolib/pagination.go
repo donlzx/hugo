@@ -271,7 +271,8 @@ func paginatePages(seq interface{}, pagerSize int, section string) (pagers, erro
 
 	section = strings.TrimSuffix(section, ".html")
 
-	urlFactory := newPaginationURLFactory(section)
+	///urlFactory := newPaginationURLFactory(section)
+	urlFactory := newPaginationURLFactory(helpers.RelURL(section))
 	paginator, _ := newPaginator(pages, pagerSize, urlFactory)
 	pagers := paginator.Pagers()
 
@@ -359,9 +360,9 @@ func newPaginationURLFactory(pathElements ...string) paginationURLFactory {
 	return func(page int) string {
 		var rel string
 		if page == 1 {
-			rel = fmt.Sprintf("/%s/", path.Join(pathElements...))
+			rel = fmt.Sprintf("%s/", path.Join(pathElements...))
 		} else {
-			rel = fmt.Sprintf("/%s/%s/%d/", path.Join(pathElements...), paginatePath, page)
+			rel = fmt.Sprintf("%s/%s/%d/", path.Join(pathElements...), paginatePath, page)
 		}
 
 		return helpers.URLizeAndPrep(rel)
